@@ -1,5 +1,6 @@
 var allData = [];
 
+
 document.getElementById('addData').onclick = function (e) {
 
     e.preventDefault()
@@ -18,17 +19,39 @@ document.getElementById('addData').onclick = function (e) {
         <div class="col-md-3">
                 <div class="card m-1">
                     <div class="card-body d-flex justify-content-between">
-                        <p>BookName: ${items.name}</p>
-                        <p>BookPrice: ${items.price}</p>
+                        <p> ${items.name}</p>
+                        <p> ${items.price}</p>
                     </div>
-                    <button class="btn btn-danger">Remove</button>
+                    <button class="btn btn-danger" onclick="delItem()">Remove</button>
                 </div>
             </div>
         `
     })
 
-    inpPrice = ""
-    inpName = ""
     document.getElementById('bind').innerHTML = bindData;
 
+}
+
+function delItem(i) {
+    allData.splice(i, 1)
+
+    console.log(allData)
+
+    card = ""
+    allData.forEach((items) => {
+
+        bindData += `
+                        <div class="col-md-3">
+                                <div class="card m-1">
+                                    <div class="card-body d-flex justify-content-between">
+                                        <p>${items.name}</p>
+                                        <p>${items.price}</p>
+                                    </div>
+                                    <button class="btn btn-danger" onclick="delItem()">Remove</button>
+                                </div>
+                            </div>
+                    `
+    })
+
+    document.getElementById('bind').innerHTML = bindData;
 }

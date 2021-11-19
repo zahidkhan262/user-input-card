@@ -26,7 +26,7 @@
         }
 
         form {
-            width: 500px;
+            max-width: 500px;
             margin: 40px auto;
             border: 1px solid powderblue;
             padding: 20px;
@@ -36,6 +36,12 @@
         input,
         button:focus {
             box-shadow: 0 0 0 0px !important;
+        }
+
+        p {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
     </style>
 </head>
