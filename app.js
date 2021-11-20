@@ -1,9 +1,9 @@
 var allData = [];
 
 
-document.getElementById('addData').onclick = function (e) {
+// document.getElementById('addData').onclick = function (e) 
+function addItem() {
 
-    e.preventDefault()
     let inpName = document.getElementById('name').value;
     let inpPrice = document.getElementById('price').value;
 
@@ -16,42 +16,50 @@ document.getElementById('addData').onclick = function (e) {
     bindData = ""
     allData.forEach((items) => {
         bindData += `
-        <div class="col-md-3">
-                <div class="card m-1">
-                    <div class="card-body d-flex justify-content-between">
-                        <p> ${items.name}</p>
-                        <p> ${items.price}</p>
+                    <div class="col-md-3">
+                        <div class="card m-1">
+                                <div class="card-body d-flex justify-content-between">
+                                    <p> ${items.name}</p>
+                                    <p> ${items.price}</p>
+                                </div>
+                                <button class="btn btn-danger" onclick="delItem()">Remove</button>
+                        </div>
                     </div>
-                    <button class="btn btn-danger" onclick="delItem()">Remove</button>
-                </div>
-            </div>
-        `
+                `
     })
 
     document.getElementById('bind').innerHTML = bindData;
 
 }
 
-function delItem(i) {
-    allData.splice(i, 1)
+
+
+function delItem(index) {
+
+
+
+
+    allData.splice(index, 1);
 
     console.log(allData)
 
-    card = ""
-    allData.forEach((items) => {
+    bindData = ""
+
+    allData.forEach((ele) => {
 
         bindData += `
                         <div class="col-md-3">
-                                <div class="card m-1">
-                                    <div class="card-body d-flex justify-content-between">
-                                        <p>${items.name}</p>
-                                        <p>${items.price}</p>
-                                    </div>
-                                    <button class="btn btn-danger" onclick="delItem()">Remove</button>
+                            <div class="card m-1">
+                                <div class="card-body d-flex justify-content-between">
+                                    <p>${ele.name}</p>
+                                    <p>${ele.price}</p>
                                 </div>
+                            <button class="btn btn-danger" onclick="delItem()">Remove</button>
                             </div>
-                    `
+                        </div>
+    `
     })
 
     document.getElementById('bind').innerHTML = bindData;
+
 }
